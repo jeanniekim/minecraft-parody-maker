@@ -45,7 +45,7 @@ rhyme: https://stackoverflow.com/questions/25714531/find-rhyme-using-nltk-in-pyt
 > POS tagging the lyrics
   - how to deal with "Enemy-y-y-y", parentheticals "(Woo!)", part labels "[Drake]"
 
-
+DONE: POS-only lyrics generator 
 
 how to preserve line breaks in the pos tagging processs?
   - doing line by line limits potential to keep words consistent across the lyrics
@@ -53,4 +53,41 @@ how to preserve line breaks in the pos tagging processs?
       - "enemy" -> "minecraft" is a constant
         - specific nouns should be detected? to keep consistent?
 
-  
+replaces ALL words with a POS match 
+- don't do this? it works pretty well 
+
+- Capital Matching
+  - preserve capitals
+    > short fix: capitalize all lines (standard lyrics practice)
+      - but this will uncapitalize other things in the lyrics "I love the DEA" -> "I love the dea"
+      - doesn't change the OG string though
+      - doesn't work for ()
+
+    > regex???
+  * FIXED: checked word by word whether capitalized
+      - all caps probably refers to an abbreviation (USA, DEA) which we don't have... so maybe this is not necessary
+      - won't work if the word has a capital in the middle of it though "FedEx", which is fine I think
+
+next up: syllables
+
+http://www.onebloke.com/2011/06/counting-syllables-accurately-in-python-on-google-app-engine/
+- uh oh... minecraft doesn't work...
+- custom syllables for things that won't be in the dictionary? (in mineWords)
+  - just put them for every one
+- wish there was a package that could predict syllable count, not just refer to an existing dictionary
+  - or maybe both
+    > site includes such code but it's outdated
+
+https://eayd.in/?p=232
+^ the mother site
+
+https://rhymebrain.com/api.html
+^ from a comment on one of those blogs
+- includes rhymes + syllable count
+- uses cmu dictionary and its own algorithm when it's not in the dictionary !
+
+using rhymebrain API: https://www.twilio.com/blog/2018/08/improving-your-pun-game-with-python-rhymebrain-and-the-twilio-api-for-whatsapp.html
+
+
+rhymebrain is STRONG. it's GOOD!!!
+

@@ -8,6 +8,7 @@ from nltk.tokenize import word_tokenize
 import random
 from nltk.tokenize.treebank import TreebankWordDetokenizer as tbdetok
 
+### *** PART OF SPEECH MATCHING ***
 
 text = word_tokenize("punching zombies at night\ncreepers give a big fright\nmine diamonds")
 print(nltk.pos_tag(text))
@@ -23,7 +24,7 @@ mineWordsTag = nltk.pos_tag(mineWords)
 print(mineWordsTag)
 
 # reading in the lyrics
-lyricFile = "basementShort.txt"
+lyricFile = "enemyShort.txt"
 lyrics = []
 with open(os.path.join("lyrics", lyricFile),'r', encoding="utf8") as a: # first, read txt file into a list
         lyrics = a.readlines()
@@ -55,7 +56,14 @@ def replaceWord(lyricWord, taggedMineWords):
 
     if (len(matchMineWords) > 0): # there is at least one matching word
         # choose random word from list
-        return random.choice(matchMineWords)
+        # capital matching
+        if word[0].isupper(): # capitalized
+            finalWord = random.choice(matchMineWords).capitalize()
+        #elif word.isupper(): # all caps
+        #    finalWord = random.choice(matchMineWords).upper()
+        else:
+            finalWord = random.choice(matchMineWords)
+        return finalWord
     else:
         return word # return og word
 
@@ -85,3 +93,23 @@ print(funnyLyrics)
 funnyFile = lyricFile[:-4] + "Fun.txt"
 with open(os.path.join("funnyLyrics", funnyFile),'w', encoding="utf8") as b: # first, read txt file into a list
     b.write(funnyLyrics)
+
+# http://www.onebloke.com/2011/06/counting-syllables-accurately-in-python-on-google-app-engine/
+
+#pip install requests==2.19.1 twilio==6.16.0 flask==1.0.2
+import requests
+
+rhymebrain_url = 'http://rhymebrain.com/talk'
+
+def getSyllables(word):
+    params = { 'function': 'getWordInfo', 'word': word }
+    rhymebrain_response = requests.get(rhymebrain_url, params).json()
+
+    resp_str = ''
+
+    for syls in rhymebrain_response:
+        resp_str  = '{}\n'.format(syls['syllables'])
+
+    return resp_str.replace(',', ', ')
+
+print(getSyllables("minecraft"))
