@@ -1,0 +1,32 @@
+# machine learning minecraft parody maker
+[7/18/22]
+
+goal: input song (maybe even song name?), output legit minecraft parody lyrics
+
+ideas: 
+- have textfile/database of *popular* minecraft related words
+  - ex. mine, mining, creeper, zombie, sword, pick, axe
+- replace words from og lyrics that:
+  * rhyme / partially rhyme
+  * match part of speech 
+  * match number of syllables
+...with the minecraft alternative
+  - will be a hierarchy of decisions
+    - highest is rhyme + pos + syllables (all matching)
+    - maybe if the word matches syllables + pos but doesn't rhyme it's ok
+      - eg. i'm falling -> i'm mining (s, p, Xr)
+      > but only if it's not the last word(?)
+        - rhyme schemes???
+    - not matching pos is pretty bad
+      - i'm in the mining (X)
+- somehow deal with common phrases
+  - ex. mining + diamonds, gold, iron
+    - diamonds (2 syllables), iron (2 syllables), gold (1 syllable)
+      - decision tree/hierarchy again based on those?
+
+
+how to match rhymes
+how to match POS -> nltk
+how to match syllables
+
+step 1: read in the file
