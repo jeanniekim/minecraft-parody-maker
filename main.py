@@ -23,7 +23,7 @@ mineWordsTag = nltk.pos_tag(mineWords)
 print(mineWordsTag)
 
 # reading in the lyrics
-lyricFile = "enemyShort.txt"
+lyricFile = "basementShort.txt"
 lyrics = []
 with open(os.path.join("lyrics", lyricFile),'r', encoding="utf8") as a: # first, read txt file into a list
         lyrics = a.readlines()
@@ -82,6 +82,6 @@ for line in lyrics:
 funnyLyrics = "\n".join(funnyLyrics)
 print(funnyLyrics)
 
-funnyFile = "funny1.txt"
+funnyFile = lyricFile[:-4] + "Fun.txt"
 with open(os.path.join("funnyLyrics", funnyFile),'w', encoding="utf8") as b: # first, read txt file into a list
     b.write(funnyLyrics)
