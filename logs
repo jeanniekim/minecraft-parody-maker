@@ -91,3 +91,19 @@ using rhymebrain API: https://www.twilio.com/blog/2018/08/improving-your-pun-gam
 
 rhymebrain is STRONG. it's GOOD!!!
 
+https://pypi.org/project/pyrhyme/ 
+^ python wrapper for rhymebrain
+
+uh oh... rhymebrain doesn't work well with contractions 
+- I'm -> 2 syllables
+- You're -> 0 syllables?
+
+also, rhymebrain is kind of slow (have to access a website)
+- need wifi to work
+
+https://medium.com/@mholtzscher/programmatically-counting-syllables-ca760435fab4
+syllapy? 
+linux :(((
+
+
+https://github.com/repp/big-phoney

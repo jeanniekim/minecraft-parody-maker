@@ -1,5 +1,7 @@
 import os
 from sqlite3 import ProgrammingError
+from tokenize import String
+from xml.etree.ElementTree import TreeBuilder
 import nltk # pip install nltk
 #import syllables # pip install syllables
 from nltk.tokenize import word_tokenize
@@ -7,6 +9,9 @@ from nltk.tokenize import word_tokenize
 
 import random
 from nltk.tokenize.treebank import TreebankWordDetokenizer as tbdetok
+
+import csv
+
 
 ### *** PART OF SPEECH MATCHING ***
 
@@ -98,18 +103,31 @@ with open(os.path.join("funnyLyrics", funnyFile),'w', encoding="utf8") as b: # f
 
 #pip install requests==2.19.1 twilio==6.16.0 flask==1.0.2
 import requests
+import pyrhyme # pip install pyrhyme
 
 rhymebrain_url = 'http://rhymebrain.com/talk'
 
-def getSyllables(word):
+# read in csv file containing contraction syllables
+contractions = dict()
+with open("contractions.csv", 'r') as c:
+    csvreader = csv.reader(c)
+    for row in csvreader:
+        contractions.update({row[0]: row[1]})
+
+# get the number of syllables of any word (or string of words) using rhymebrain and csv
+def getSyllables(word): 
+    if '\'' in word: # word is a contraction
+        capWord = word.capitalize() # csv uses capitialized words
+        if capWord in contractions: # if there's a match
+            return contractions.get(capWord) # return the syllables
+
     params = { 'function': 'getWordInfo', 'word': word }
-    rhymebrain_response = requests.get(rhymebrain_url, params).json()
+    rhymebrain_response = requests.get(rhymebrain_url, params).json() 
+    # rhymebrain_response is a dictionary with word information
 
-    resp_str = ''
+    syllables = rhymebrain_response.get('syllables')
 
-    for syls in rhymebrain_response:
-        resp_str  = '{}\n'.format(syls['syllables'])
+    return syllables
+         
 
-    return resp_str.replace(',', ', ')
-
-print(getSyllables("minecraft"))
+print(getSyllables("I don't belong here"))

@@ -1,21 +1,21 @@
-minecraft,2
-creeper,1
-creepers,1
-mine,1
-mining,2
-mines,1
-zombie,1
-night,1
-nights,1
-pickaxe,1
-pickaxes,3
-axe,1
-axes,2
-pick,1
-iron,2
-gold,1
-diamond,2
-diamonds,2
-ore,1
-iron ore,3
-diamond ore,3
+minecraft
+creeper
+creepers
+mine
+mining
+mines
+zombie
+night
+nights
+pickaxe
+pickaxes
+axe
+axes
+pick
+iron
+gold
+diamond
+diamonds
+ore
+iron ore
+diamond ore
