@@ -1,5 +1,5 @@
 ## A Minecraft parody generator
-
+Uses [nltk library](https://www.nltk.org/) and [RhymeBrain API](https://rhymebrain.com/api.html).
 ### What is a Minecraft?
 Minecraft is a sandbox block-based video game that was developed in 2011 and has since become the best-selling video game of all time. People of all ages play Minecraft, but it is especially popular among young children.
 
