@@ -99,6 +99,8 @@ funnyFile = lyricFile[:-4] + "Fun.txt"
 with open(os.path.join("funnyLyrics", funnyFile),'w', encoding="utf8") as b: # first, read txt file into a list
     b.write(funnyLyrics)
 
+### *** SYLLABLES ***
+
 # http://www.onebloke.com/2011/06/counting-syllables-accurately-in-python-on-google-app-engine/
 
 #pip install requests==2.19.1 twilio==6.16.0 flask==1.0.2

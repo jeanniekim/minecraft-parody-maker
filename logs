@@ -105,8 +105,20 @@ https://medium.com/@mholtzscher/programmatically-counting-syllables-ca760435fab4
 syllapy? 
 linux :(((
 
-
 https://github.com/repp/big-phoney
 
 just do contractions manually?
 https://commons.wikimedia.org/wiki/File:Common_English_contractions.jpg
+
+DONE: finish syllable counter with custom contractions csv
+
+How to integrate syllables into replacing algorithm
+
+rhymebrain API -> can get list of rhyming word dicts (including NEAR RHYMES)
+- strength of rhyme through "score" key
+- syllables through "syllables" key
+
+split into different files?
+
+
+only swap those that match both POS and SYLLABLES
