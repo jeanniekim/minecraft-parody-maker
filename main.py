@@ -32,8 +32,8 @@ print(lyrics)
 
 # tagging the lyrics
 
-lyricsTok = word_tokenize(lyrics)
-lyricsTag = nltk.pos_tag(lyricsTok)
+#lyricsTok = word_tokenize(lyrics)
+#lyricsTag = nltk.pos_tag(lyricsTok)
 
 # replace words in the lyrics with words from mineWords with the same POS
 funnyLyrics = ""
@@ -64,15 +64,24 @@ def processLine(line):
     lineTok = word_tokenize(line)
     lineTag = nltk.pos_tag(lineTok)
     
-    for i in range(len(lyricsTok)):
+    for i in range(len(lineTok)):
         lineTup = lineTag[i]
+        lineTok[i] = replaceWord(lineTup, mineWordsTag)
 
-    lyricsTok[i] = replaceWord(lineTup, mineWordsTag)
+    finalLine = tbdetok().detokenize(lineTok)
+    return finalLine
 
 
+# DO THE THINGY.
 
-print(lyricsTok)
+funnyLyrics = []
 
-funnyLyrics = tbdetok().detokenize(lyricsTok)
+for line in lyrics:
+    funnyLyrics.append(processLine(line))
+
+funnyLyrics = "\n".join(funnyLyrics)
 print(funnyLyrics)
 
+funnyFile = "funny1.txt"
+with open(os.path.join("funnyLyrics", funnyFile),'w', encoding="utf8") as b: # first, read txt file into a list
+    b.write(funnyLyrics)

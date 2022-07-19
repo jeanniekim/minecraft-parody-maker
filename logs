@@ -27,6 +27,30 @@ ideas:
 
 how to match rhymes
 how to match POS -> nltk
+ - it's wrong sometimes "mine diamonds" -> noun noun
 how to match syllables
 
 step 1: read in the file
+
+- how should the final dataset look
+  - dict with word (pos, syllables, rhyme???)
+
+rhyme: https://stackoverflow.com/questions/25714531/find-rhyme-using-nltk-in-python
+
+1. read in the lyrics
+2. analyze lyrics
+3. perform Replacements
+4. write the lyrics to new file
+
+> POS tagging the lyrics
+  - how to deal with "Enemy-y-y-y", parentheticals "(Woo!)", part labels "[Drake]"
+
+
+
+how to preserve line breaks in the pos tagging processs?
+  - doing line by line limits potential to keep words consistent across the lyrics
+    > e.g. Chorus lines should stay consistent
+      - "enemy" -> "minecraft" is a constant
+        - specific nouns should be detected? to keep consistent?
+
+  
